@@ -1,6 +1,9 @@
+# coding: utf-8
 
+import sys
 from flask import Flask
 from src.views.index import app as route_index
+from src.untils import option
 
 app = Flask(__name__)
 
@@ -14,9 +17,11 @@ def register_route():
 
 def main():
     register_route()
+
+    port = option.port or 4000
     config = dict(
         host='localhost',
-        port=4000,
+        port=port,
         debug=True,
     )
     app.run(**config)

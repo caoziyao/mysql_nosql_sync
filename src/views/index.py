@@ -9,7 +9,7 @@ from flask import render_template, request
 from flask.blueprints import Blueprint
 from config.constant import static_folder, template_folder
 # from .hot_spot import update_views, views_from_cached
-
+from src.database import data_manager
 
 app = Blueprint('basis', __name__, static_folder=static_folder, template_folder=template_folder)
 
