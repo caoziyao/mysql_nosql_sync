@@ -22,7 +22,7 @@ def main():
     config = dict(
         host='localhost',
         port=port,
-        debug=True,
+        debug=False,
     )
     app.run(**config)
 

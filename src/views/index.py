@@ -21,3 +21,35 @@ def index():
     :return:
     """
     return render_template('index.html')
+
+
+# api
+@app.route('/api/test_write', methods=['GET'])
+def test_write():
+    """
+    页面入口
+    :return:
+    """
+    manager = data_manager
+    data = {
+        'username': 'zxc'
+    }
+    r = manager.insert('tb_user', data)
+
+
+    # sql = 'insert into test_slave1.tb_user select distinct * from  test_master.tb_user'
+    # manager.execute(sql)
+
+    return 'a'
+
+
+@app.route('/api/test_read', methods=['GET'])
+def test_read():
+    """
+    页面入口
+    :return:
+    """
+    manager = data_manager
+    d = manager.fetch_rows('tb_user')
+
+    return json.dumps(d)

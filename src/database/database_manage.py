@@ -3,14 +3,6 @@
 import pymysql
 from config.config import mysql_config
 
-# config = {
-#     "host": "127.0.0.1",
-#     "port": 3306,
-#     "username": "root",
-#     "password": "zy123456",
-#     "dbname": "test_master",
-#     "charset": "utf8"
-# }
 
 class DBManager(object):
     _instance = None
@@ -238,6 +230,30 @@ class DBManager(object):
                 return cursor.fetchone()
             else:
                 return cursor.fetchall()
+
+    def execute(self, sql, args=None):
+        """
+        执行插入和更新时调用此方法
+        :param sql_statement:
+        :param args:
+        :return:
+        """
+        row_id = 0
+        with self.pool.cursor() as cursor:
+            if not sql:
+                return None
+
+            if self._has_bind_argument(args):
+                cursor.execute(sql, args)
+            else:
+                cursor.execute(sql)
+            self.pool.commit()
+            # row_id = cursor.lastrowid
+        # return row_id
+
+    @classmethod
+    def _has_bind_argument(cls, args):
+        return isinstance(args, (tuple, list))
 
 
     def __del__(self):
