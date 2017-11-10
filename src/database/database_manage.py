@@ -238,7 +238,6 @@ class DBManager(object):
         :param args:
         :return:
         """
-        row_id = 0
         with self.pool.cursor() as cursor:
             if not sql:
                 return None
@@ -248,8 +247,10 @@ class DBManager(object):
             else:
                 cursor.execute(sql)
             self.pool.commit()
-            # row_id = cursor.lastrowid
-        # return row_id
+            row_id = cursor.lastrowid
+
+            return row_id
+
 
     @classmethod
     def _has_bind_argument(cls, args):
