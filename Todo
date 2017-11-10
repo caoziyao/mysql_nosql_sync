@@ -1,10 +1,11 @@
 
 python 服务器架构
 
-nginx 负载均衡配置
-cdn 静态服务器策略
-
-python 连接 mysql
+[x] nginx 负载均衡配置
+略过 cdn 静态服务器策略
+nging 代理静态文件
+[x] python 连接 mysql
+[x] python 封装 mysql
 python 连接 mongodb
 python 连接 redis
 
@@ -14,14 +15,9 @@ redis 集群的使用
 hash 分区
 
 [x] mysql 主从配置
-mysql 备份策略
-
+[x] mysql 备份策略
 mysql读写分离, 不建议
-
 redis/mogodb 和 Mysql 交互
-读套路
-写套路
-binlog 实时同步套路
 
 
 

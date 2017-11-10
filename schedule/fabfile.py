@@ -4,6 +4,7 @@ from fabric.api import local, cd, run, env, settings, task, get
 from datetime import datetime
 
 """
+https://segmentfault.com/a/1190000007389167
 1.主从备份
 2. mysqldump 备份，lz4 压缩，
 3. 同时也备份 master binlog
